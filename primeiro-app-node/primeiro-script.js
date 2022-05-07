@@ -4,7 +4,6 @@ alunos.forEach(aluno => {
   console.log(`Boa noite, ${aluno}`)
 })
 
-
 // Window não está está disponível no node: dá erro
 try {
   window.alert('Não entro aqui, pois não existo no node')
@@ -25,3 +24,5 @@ try {
 
 const numero = 10
 console.log(numero)
+console.log(document)
+console.log(document.querySelector)
