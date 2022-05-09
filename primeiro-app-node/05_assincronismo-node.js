@@ -1,4 +1,4 @@
-// códigos asíncronos são executados DEPOIS
+// códigos assíncronos são executados DEPOIS
 setTimeout(() => {console.log('Rodo dentro de um timer')}, 0)
 setTimeout(() => {console.log('Rodo dentro de um timer')}, 1000)
 
