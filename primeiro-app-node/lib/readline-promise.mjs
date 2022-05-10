@@ -1,9 +1,24 @@
 import * as rl from 'readline'
 
-function createReadlinePromise() {
-  const readline = rl.createInterface({
+export function createReadlineWithQuestionPromise() {
+  const terminalInterface = rl.createInterface({
     input: process.stdin,
     output: process.stdout,
   })
 
+  return {
+    ...terminalInterface,
+    close: () => { terminalInterface.close() },
+    question: (pergunta) => {
+      return new Promise((resolve, reject) => {
+        try {
+          terminalInterface.question(`${pergunta} `, (answer) => {
+            resolve(answer)
+          })
+        } catch (error) {
+          reject(error)
+        }
+      })
+    }
   }
+}
