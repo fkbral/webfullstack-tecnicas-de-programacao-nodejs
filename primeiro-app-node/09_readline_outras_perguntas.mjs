@@ -1,7 +1,6 @@
 import { createReadlineWithQuestionPromise } from './lib/readline-promise.mjs'
 
 const readline = createReadlineWithQuestionPromise()
-readline.question()
 
 const language = await readline.question(
   'Qual é a linguagem de programação que você tem mais proficiência?'
