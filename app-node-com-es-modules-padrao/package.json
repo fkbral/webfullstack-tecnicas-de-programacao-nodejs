@@ -1,13 +1,16 @@
 {
-  "name": "segundo-app-node",
+  "name": "app-node-com-es-modules-padrao",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./01_arquivos-no-node.js"
   },
   "keywords": [],
+  "engines" : { 
+    "node" : ">=14.3.0"
+  },
   "author": "",
   "license": "ISC"
 }
