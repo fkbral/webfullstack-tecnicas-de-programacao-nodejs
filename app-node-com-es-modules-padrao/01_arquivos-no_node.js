@@ -1,9 +1,9 @@
 import fs from 'fs'
 import path from 'path'
+import { createDirAndFileNameGlobals } from './libs/defaultPaths.js'
 
-// const __dirname =
-const [, __filename] = import.meta.url.split('file://')
-const __dirname = path.join(__filename, '..')
+const { __dirname, __filename } = createDirAndFileNameGlobals(import.meta.url)
+
 const filePath = process.cwd()
 // const filePath = path.join(process.cwd(), '..', '..')
 // const filePath = path.join(process.cwd(), '../../..')

@@ -1,8 +1,9 @@
 import fs from 'fs'
 import path from 'path'
+import { createDirAndFileNameGlobals } from './libs/defaultPaths.js'
 
-const [, __filename] = import.meta.url.split('file://')
-const __dirname = path.join(__filename, '..')
+const { __dirname } = createDirAndFileNameGlobals(import.meta.url)
+
 const diretorioACriar = path.join(__dirname, 'pasta1/teste1/teste2')
 const diretorio2ACriar = path.join(__dirname, 'pasta2')
 
