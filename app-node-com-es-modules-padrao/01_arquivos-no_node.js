@@ -35,4 +35,4 @@ getFileNames(filePath)
 getFileOrDirStats(filePath)
 getFileStats(filePath)
 
-fs.promises.readdir(path).then(result => console.log(result))
+fs.promises.readdir(filePath).then(result => console.log(result))
