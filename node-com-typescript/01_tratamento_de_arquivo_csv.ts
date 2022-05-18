@@ -8,19 +8,26 @@ const readStream = fs.createReadStream(fileUrl, { encoding: 'utf8' })
 const writeStream = fs.createWriteStream(destFileUrl)
 
 interface IZoologico {
-  animal: string,
-  quantidade: number,
-  numeroDeVisitasSemanal: string,
-  comentario: string,
+  animal: string
+  quantidade: number
+  numeroDeVisitasSemanal: string
+  comentario: string
   popularidade: number
 }
 
 readStream.on('data', (chunk: string) => {
   const [, ...animalLines] = chunk.split('\n')
-  
-  const zoologico: IZoologico[] = animalLines.map(animalLine => {
-    const [animal, quantidade, numeroDeVisitasSemanal, comentario, popularidade] =
-     animalLine.split(',')
+
+  // Genérico
+  // const zoologico = animalLines.map<IZoologico>(animalLine => {
+  const zoologico: IZoologico[] = animalLines.map((animalLine) => {
+    const [
+      animal,
+      quantidade,
+      numeroDeVisitasSemanal,
+      comentario,
+      popularidade,
+    ] = animalLine.split(',')
 
     // const zooObject: IZoologico = {
     //   animal,
@@ -29,7 +36,7 @@ readStream.on('data', (chunk: string) => {
     //   comentario,
     //   popularidade: Number(popularidade),
     // }
-  
+
     // return zooObject
 
     return {
@@ -37,12 +44,10 @@ readStream.on('data', (chunk: string) => {
       quantidade: Number(quantidade),
       numeroDeVisitasSemanal,
       comentario,
-      popularidade: Number(popularidade)
+      popularidade: Number(popularidade),
+      volume: 10,
     }
   })
 
-  writeStream.write(
-    JSON.stringify(zoologico, null, 2)
-  )
+  writeStream.write(JSON.stringify(zoologico, null, 2))
 })
-
