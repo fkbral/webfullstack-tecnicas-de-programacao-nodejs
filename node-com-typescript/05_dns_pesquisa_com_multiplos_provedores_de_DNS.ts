@@ -14,7 +14,7 @@ async function pesquisaDNS() {
   const provedoresDeDNS = await dns.promises.resolveNs(urlPesquisada)
   console.log(provedoresDeDNS)
 
-  // Resgatando IP de provedor de DNS usado pelo site
+  // Resgatando IPs dos provedores de DNS usados pelo site
   const ipsv4NSPromises = provedoresDeDNS.map(async (provedorDeDNS) =>
     dns.promises.resolve4(provedorDeDNS)
   )
@@ -23,9 +23,10 @@ async function pesquisaDNS() {
 
   // Criando novo resolvedor de DNS com os IPs dos provedores de DNS usados pelo site
   const dnsResolverDaAWS = new Resolver()
+  console.log(ipsv4NS.flat())
   dnsResolverDaAWS.setServers(ipsv4NS.flat())
 
-  console.time('busca de ipsv4')
+  // console.time('busca de ipsv4')
   const ipsv4ComProvedorDeDNSDaAWS = await dnsResolverDaAWS.resolve4(
     urlPesquisada
   )
