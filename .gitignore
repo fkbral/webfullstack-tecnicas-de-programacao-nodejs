@@ -1,3 +1,5 @@
 */uploads/*
 !*/uploads/zoologico.csv
 !*/uploads/numeros.txt
+.env*
+!.env.example
