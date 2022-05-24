@@ -11,10 +11,13 @@ export function createDirAndFileNameGlobals(importPath) {
   const osName = os.type()
   const splitByString = splitByHashMap[osName]
   const [, __filename] = importPath.split(splitByString)
-  const __dirname = path.join(__filename, '..')
+  const parsedFileName = decodeURIComponent(__filename)
+  const __dirname = path.join(parsedFileName, '..')
   
   return {
     __dirname,
     __filename
   }
 }
+
+createDirAndFileNameGlobals(import.meta.url)
